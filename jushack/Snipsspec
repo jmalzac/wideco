@@ -1,0 +1,19 @@
+package_name: jushack
+class_name: JusHack
+description: Hacked jus machine Snips skill
+intents:
+  - intent: pour
+    action: |
+      {%
+      jus_size = ''
+      
+      if len(snips.intent.jus_size):
+        jus_size = snips.intent.jus_size[0]
+      snips.skill.jus(jus_size = jus_size,
+                dialogue = snips.dialogue)
+      %}
+  - intent: jus_toggle
+    action: |
+      {%
+      snips.skill.toggle_on_off(snips.dialogue)
+      %}
